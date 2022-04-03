@@ -11,7 +11,7 @@ class Filehandler:
     # membaca file dan mengubahnya kedalam bentuk matrik #
     def bacaFile(self, namafile):
         file = open(namafile, "r")
-        temp = file.readline()
+        temp = file.readlines()
         matrik = []  # inisialisasi matrik
         for element in temp:
             elmt = element.strip("\n").split(" ")
