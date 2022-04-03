@@ -1,6 +1,4 @@
 # main program yang digunakan untuk menjalankan program
-
-from asyncio.windows_events import NULL
 from FileHandler import *
 from Puzzle import *
 import time
