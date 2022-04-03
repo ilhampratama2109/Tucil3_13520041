@@ -1,5 +1,8 @@
 # program ini digunakan untuk membaca inputan dari file dan menyimpannya kedalam bentuk matrik #
 
+from Puzzle import Puzzle
+
+
 class Filehandler:
     # konstruktor dari kelas FileHandler #
     def __init__(self):
@@ -21,3 +24,6 @@ class Filehandler:
                     matrik[i][j] = 16
                 else:  # mengganti tipe element matrik ke dalam bentuk integer #
                     matrik[i][j] = int(matrik[i][j])
+        puzzle = Puzzle()
+        puzzle.matrik = matrik
+        return puzzle

@@ -1,4 +1,7 @@
 # berisi tentang class puzzle #
+import copy
+from turtle import down
+
 
 class Puzzle:
     # konstruktor untuk kelas puzzle
@@ -174,3 +177,51 @@ class Puzzle:
             print("Right")
         else:
             pass
+
+    def solve(self):
+        upPosition = 999
+        downPosition = 999
+        leftPosition = 999
+        rightPosition = 999
+
+        up = [copy.deepcopy(self.matrik), 'up']
+        down = [copy.deepcopy(self.matrik), 'down']
+        left = [copy.deepcopy(self.matrik), 'left']
+        right = [copy.deepcopy(self.matrik), 'right']
+
+        self.move(up)
+        self.move(down)
+        self.move(left)
+        self.move(right)
+
+        self.deep = self.deep + 1
+
+        if (tuple(self.convertToArray(up[0])) not in self.container):
+            upPosition = 16 - self.countPosition(up[0]) + self.deep
+            self.container[tuple(self.convertToArray(up[0]))] = 'up'
+            self.queue.append(
+                [upPosition, self.deep, self.path + 'w ', self.convertToArray(up[0])])
+
+        if (tuple(self.convertToArray(down[0])) not in self.container):
+            downPosition = 16 - self.countPosition(down[0]) + self.deep
+            self.container[tuple(self.convertToArray(down[0]))] = 'down'
+            self.queue.append(
+                [downPosition, self.deep, self.path + 's ', self.convertToArray(down[0])])
+
+        if (tuple(self.convertToArray(left[0])) not in self.container):
+            leftPosition = 16 - self.countPosition(left[0]) + self.deep
+            self.container[tuple(self.convertToArray(left[0]))] = 'left'
+            self.queue.append(
+                [leftPosition, self.deep, self.path + 'a ', self.convertToArray(left[0])])
+
+        if (tuple(self.convertToArray(right[0])) not in self.container):
+            rightPosition = 16 - self.countPosition(right[0]) + self.deep
+            self.container[tuple(self.convertToArray(right[0]))] = 'right'
+            self.queue.append(
+                [rightPosition, self.deep, self.path + 'd ', self.convertToArray(right[0])])
+
+        self.queue.sort()
+        pop = self.queue.pop(0)
+        self.matrik = self.convertToMatrik(pop[3])
+        self.deep = pop[1]
+        self.path = pop[2]
