@@ -9,7 +9,7 @@ import copy
 
 print("==== Puzzle Solver ====")
 directory = input("masukkan nama file: ")
-filePath = "E:/semester 4/strategi algoritma/tucil/Tucil 3/Tucil3_IF2211_Strategi_Algoritma/src/"
+filePath = "E:/semester 4/strategi algoritma/tucil/Tucil 3/Tucil3_IF2211_Strategi_Algoritma/test/"
 
 # membaca input file
 file = Filehandler()
